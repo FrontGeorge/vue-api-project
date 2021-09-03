@@ -1,7 +1,9 @@
 <template>
     <ul class="card--list">
-        <template v-for="person in news" :key="person.login.uuid">
-            <Item :person="person" />
+        <template v-for="person in people" :key="person.id">
+            <template v-if="person.id <= 3">
+                <Item :person="person" />
+            </template>
         </template>
     </ul>
 </template>
@@ -18,12 +20,12 @@ export default {
     },
     setup() {
         const store = useStore();
-        const news = computed(() => store.state.news)
+        const people = computed(() => store.state.people);
         onMounted(() => {
-            store.dispatch("getNews");
+            store.dispatch("getPeople");
         })
         return {
-            news,
+            people,
         }
     }
 }

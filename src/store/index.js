@@ -3,26 +3,28 @@ import { createStore } from 'vuex'
 export default createStore({
   state: {
     titleApp: 'Articles',
-    news: [],
+    people: [],
   },
   mutations: {
-    setNews(state, payload) {
-      state.news = payload;
+    setPeople(state, payload) {
+      state.people = payload;
     }
   },
   actions: {
-    async getNews( {commit} ) {
+    // commit para ejecutat un mutation
+    async getPeople( {commit} ) {
       try {
-        const response = await fetch('https://randomuser.me/api/?results=3');
+        const response = await fetch('https://jsonplaceholder.typicode.com/posts/');
         const result = await response.json();
-        const news = result.results;    
-        commit("setNews", result.results);
-
+        const people = result;
+        console.log(result);
+        commit("setPeople", result);
       } catch (error) {
         console.log(error);
       }
     }
   },
-  modules: {
+  getters: {
+    
   }
 })

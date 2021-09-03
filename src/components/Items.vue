@@ -1,6 +1,6 @@
 <template>
     <ul class="card--list">
-        <template v-for="person in people" :key="person.id">
+        <template v-for="person in filterPeople" :key="person.id">
             <template v-if="person.id <= 3">
                 <Item :person="person" />
             </template>
@@ -21,11 +21,13 @@ export default {
     setup() {
         const store = useStore();
         const people = computed(() => store.state.people);
+        const filterPeople = computed(() => store.state.miPeople);
         onMounted(() => {
             store.dispatch("getPeople");
         })
         return {
             people,
+            filterPeople,
         }
     }
 }

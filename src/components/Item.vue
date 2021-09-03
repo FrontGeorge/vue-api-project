@@ -1,8 +1,8 @@
 <template>  
     <li class="card--item">
         <router-link class="card--item--link" :to="{ name: 'detail', params: { id: person.id, body: person.body, title: person.title }}">
-            <strong>{{ person.id }}</strong>
-            <strong>{{ person.title }}</strong>
+            <strong class="card--item--title">título</strong>
+            <strong class="card--item--title__text">{{ person.title }}</strong>
         </router-link>
     </li>
 </template>
@@ -23,27 +23,30 @@ export default {
             text-align: left;
             width: calc(33% - 20px);
 
-            &--author {
-                display: block;
-                font-size: 12px;
-                font-style: italic;
-            }
-
-            &--img {
-                height: 100px;
-                object-fit: cover;
-                width: 100%;
-            }
-
             &--link {
                 border: 1px solid #EEE;
-                padding: 30px;
+                box-sizing: border-box;
                 display: block;
+                height: 100%;
+                padding: 30px;
+                text-decoration: none;
 
                 @media (hover: hover) {
                     &:hover {
                         border: 1px solid #CCC;
                     }
+                }
+            }
+    
+            &--title {
+                color: #AAA;
+                display: block;
+                font-size: 12px;
+                font-style: italic;
+
+                &__text {
+                    color: #666;
+                    display: block;
                 }
             }
         }

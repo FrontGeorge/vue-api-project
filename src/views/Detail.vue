@@ -1,28 +1,21 @@
 <template>
    <div>
       <h1>{{ titleApp }}</h1>
-      <form>
-         <fieldset>
-            <legend>Usuario con id:</legend>
-            <label for="title">
-               <span>titulo:</span>
-               <textarea id="title" v-model="routeTitle" />
-            </label>
-            <label for="body">
-               <span>Cuerpo:</span>
-               <textarea id="body" v-model="routeBody" />
-            </label>
-         </fieldset>
-      </form>
+      <DetailForm :id="routeId" :title="routeTitle" :body="routeBody"  />
    </div>
 </template>
 
 <script>
 import { useRoute } from "vue-router";
-import { useStore } from 'vuex'
+import { useStore } from 'vuex';
+
+import DetailForm from '../components/DetailForm';
 
 export default {
    name: 'Detalle usuario',
+   components: {
+        DetailForm,
+    },
    setup() {
       const route = useRoute();
       const store = useStore();

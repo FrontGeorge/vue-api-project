@@ -1,9 +1,7 @@
 <template>
     <ul class="card--list">
         <template v-for="person in store.state.miPeople" :key="person.id">
-            <template v-if="person.id <= 3">
-                <Item :person="person" />
-            </template>
+            <Item :person="person" />
         </template>
     </ul>
 </template>

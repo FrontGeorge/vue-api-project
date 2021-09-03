@@ -5,6 +5,27 @@
   </div>
 </template>
 
+<script>
+import { onMounted, computed } from 'vue';
+import { useStore } from 'vuex';
+
+export default {
+    setup() {
+        const store = useStore();
+        const people = computed(() => store.state.people);
+        const filterPeople = computed(() => store.state.miPeople);
+        onMounted(() => {
+            store.dispatch("getPeople");
+        })
+        return {
+            people,
+            filterPeople,
+            ...store.state,
+        }
+    }
+}
+</script>
+
 <style lang="scss">
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;

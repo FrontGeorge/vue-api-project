@@ -12,8 +12,8 @@
                     <textarea required class="form--texarea" id="body" v-model="body" />
                 </label>
             </fieldset>
+            <button v-on:click="saludar">Actualizar</button>
         </form>
-        <button v-on:click="saludar">Actualizar</button>
     </div>
 </template>
 
@@ -35,7 +35,6 @@ export default {
     },
     setup(props)  {    
         const store = useStore();
-        const route = useRoute();
         const saludar = () => {
             const propId = parseInt(props.id);
             const miPerson = store.state.miPeople.find(element => element.id === propId);

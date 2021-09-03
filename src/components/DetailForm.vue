@@ -12,14 +12,14 @@
                     <textarea required class="form--texarea" id="body" v-model="body" />
                 </label>
             </fieldset>
-            <button v-on:click="saludar">Actualizar</button>
         </form>
+        <button v-on:click="updateMiPeople">Update</button>
     </div>
 </template>
 
 <script>
 import { useStore,computed } from 'vuex';
-import { useRoute } from "vue-router";
+import router from '../router';
 
 export default {
     data() {
@@ -35,15 +35,16 @@ export default {
     },
     setup(props)  {    
         const store = useStore();
-        const saludar = () => {
+        const updateMiPeople = () => {
             const propId = parseInt(props.id);
             const miPerson = store.state.miPeople.find(element => element.id === propId);
             miPerson.body = props.body;
-            miPerson.title = props.title; 
-            console.log(store.state.miPeople);
+            miPerson.title = props.title;
+            router.push({ path: '/' })
+
         };
         return {
-            saludar,
+            updateMiPeople,
         }
     }
 }

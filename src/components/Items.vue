@@ -15,6 +15,7 @@ import Item from './Item';
 export default {
     setup() {
         const store = useStore();
+        console.log(store.state.miPeople);
         return {
             store,
         }

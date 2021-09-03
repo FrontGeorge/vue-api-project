@@ -3,6 +3,7 @@
         <router-link class="card--item--link" :to="{ name: 'detail', params: { id: person.id, body: person.body, title: person.title }}">
             <strong class="card--item--title">título</strong>
             <strong class="card--item--title__text">{{ person.title }}</strong>
+            <span class="card--item--body">{{ person.body }}</span>
         </router-link>
     </li>
 </template>
@@ -48,6 +49,16 @@ export default {
                     color: #666;
                     display: block;
                 }
+            }
+
+            &--body {
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 2;
+                display: block;
+                display: -webkit-box;
+                height: calc(20px * 2);
+                overflow: hidden;
+                text-overflow: ellipsis;
             }
         }
     }
